@@ -19,9 +19,9 @@ class NeuralNet(object):
         # the folder is the location of saving result
         # 初始化wb1, wb2
         self.wb1 = WeightsBias(self.params.num_input, self.params.num_hidden, self.params.init_method, self.params.eta)
-        self.wb1.InitializeWeights(self.subfolder, False)
+        self.wb1.InitializeWeights(self.subfolder, True)
         self.wb2 = WeightsBias(self.params.num_hidden, self.params.num_output, self.params.init_method, self.params.eta)
-        self.wb2.InitializeWeights(self.subfolder, False)
+        self.wb2.InitializeWeights(self.subfolder, True)
 
     def __create_subfolder(self):
         if self.model_name is not None:

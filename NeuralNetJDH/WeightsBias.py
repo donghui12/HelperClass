@@ -6,8 +6,8 @@ from NeuralNetJDH.NetType import InitialMethod
 
 class WeightsBias(object):
     def __init__(self, n_input, n_output, init_method, eta):
-        self.n_input = n_input
-        self.n_output = n_output
+        self.num_input = n_input
+        self.num_output = n_output
         self.init_method = init_method
         self.eta = eta
         # 初始化文件夹
@@ -19,7 +19,7 @@ class WeightsBias(object):
         if create_new:
             self.__CreateNew()
         else:
-            self.__loadExistingParameters()
+            self.__LoadExistingParameters()
         self.delta_W = np.zeros(self.W.shape)
         self.delta_b = np.zeros(self.b.shape)
 
@@ -43,7 +43,7 @@ class WeightsBias(object):
 
     def __SaveInitialValue(self):
         file_name = str.format("{0}\\{1}.npz", self.folder, self.initial_value_filename)
-        np.savez(file_name, weights=self.W, bias=self.B)
+        np.savez(file_name, weights=self.W, bias=self.b)
 
     def __LoadInitialValue(self):
         file_name = str.format("{0}\\{1}.npz", self.folder, self.initial_value_filename)
@@ -53,7 +53,7 @@ class WeightsBias(object):
 
     def SaveResultValue(self, folder, name):
         file_name = str.format("{0}\\{1}.npz", folder, name)
-        np.savez(file_name, weights=self.W, bias=self.B)
+        np.savez(file_name, weights=self.W, bias=self.b)
 
     def LoadResultValue(self, folder, name):
         file_name = str.format("{0}\\{1}.npz", folder, name)

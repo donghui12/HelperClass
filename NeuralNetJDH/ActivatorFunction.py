@@ -25,8 +25,8 @@ class Sigmoid(Aativator):
         return a
 
     def backward(self, z, a, delta):
-        detal_A = np.multiarray(a, 1-a)
-        delta_Z = np.multiarray(delta, detal_A)
+        detal_A = np.multiply(a, 1-a)
+        delta_Z = np.multiply(delta, detal_A)
         return delta_Z, detal_A
 
 

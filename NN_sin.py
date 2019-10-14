@@ -14,7 +14,7 @@ def ShowResult():
 
 
 if __name__ == "__main__":
-    dataReader = DataReader()
+    dataReader = DataReader(train_data_name, test_data_name)
 
     n_input, n_hidden, n_output = 1, 2, 1
     eta, max_epoch = 0.05, 10000
@@ -22,5 +22,5 @@ if __name__ == "__main__":
     params = HyperParameters(n_input, n_hidden, n_output, eta, max_epoch, NetType.Fitting, InitialMethod.Xavier)
     net = NeuralNet(params, 'sin_121')
 
-    net.train(dataReader, 50, True)
-    ShowResult(net, dataReader, params.toString())
+    net.train(dataReader, True)
+    # ShowResult(net, dataReader, params.toString())
