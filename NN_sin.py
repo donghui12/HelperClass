@@ -5,8 +5,8 @@ from mpl_toolkits.mplot3d import Axes3D
 from NeuralNetJDH.NeuralNet import *
 from NeuralNetJDH.DataReader import *
 
-train_data_name = './datasets/ch08.train.npz'
-test_data_name = './datasets/ch08.test.npz'
+train_data_name = './datasets/npz/ch08.train.npz'
+test_data_name = './datasets/npz/ch08.test.npz'
 
 
 def ShowResult():
