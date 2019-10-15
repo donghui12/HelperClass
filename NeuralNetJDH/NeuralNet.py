@@ -47,7 +47,6 @@ class NeuralNet(object):
             self.A2 = self.Z2
 
         self.output = self.A2
-        return self.output
 
     def backward(self, batch_X, batch_Y, batch_A):
         # layer 1
@@ -67,21 +66,27 @@ class NeuralNet(object):
 
     def inference(self, x):
         # x is the Predicate Sets
-        self.backward(x)
+        self.forward(x)
         return self.output
 
     def train(self, dataReader, need_test):
-        # dataReader = DataReader()
-        dataReader.Read_NPZ_Data()
         batch_x = dataReader.NormalizeX(1)
         batch_y = dataReader.NormalizeY(1)
+        loss_function = LossFunction(self.params.net_type)
+        loss_History = []
         for epoch in range(int(self.params.max_epoch)):
             if epoch % 1000 == 0:
                 print('epoch=%d' %epoch)
             batch_a = self.forward(batch_X=batch_x)
+            loss = loss_function.CheckLoss(self.A2, batch_y)
+            loss_History.append(loss)
             self.backward(batch_x, batch_y, batch_a)
             self.update()
         self.SaveResult()
+        self.loss_History = loss_History
+
+    def ShowLoss(self):
+        return self.loss_History
 
     def SaveResult(self):
         self.wb1.SaveResultValue(self.subfolder, 'wb1')

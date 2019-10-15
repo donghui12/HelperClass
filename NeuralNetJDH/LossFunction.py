@@ -20,7 +20,7 @@ class LossFunction(object):
 
     def MSE(self, A, Y, count):
         p1 = A - Y
-        LOSS = np.multiarray(p1, p1)
+        LOSS = np.multiply(p1, p1)
         loss = LOSS.sum()/count/2
         return loss
     # end def
